@@ -1,0 +1,42 @@
+{# templates/guess_my_number/guessrecords.html.twig #}
+
+{% extends 'guess_record/layout.html.twig' %}
+
+{# {% block title %}Hello HighScoreController!{% endblock %} #}
+
+{% block content %}
+
+    {# <h1>Hello {{ controller_name }}! ✅</h1> #}
+    <h1 class="guess-records-header">Score records of the game guess my number!</h1>
+    {# <p>{{ dump(guess_records) }}</p> #}
+
+    {% if guess_records is defined %}
+        <table class="guess-records-table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Tries</th>
+                    <th>Number</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for guess_record in guess_records %}
+                <tr>
+                    <td>{{ guess_record.id }}</td>
+                    <td>{{ guess_record.name }}</td>
+                    <td>{{ guess_record.tries }}</td>
+                    <td>{{ guess_record.number }}</td>
+                    <td>{{ guess_record.date|date("d. M Y") }}</td>
+                    <td>{{ guess_record.date|date("H:i:s") }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <h2>Sorry, there are no guess records to show!</h2>
+        <p>Route name of controller: {{ route_name_of_controller }}</p>
+    {% endif %}
+{% endblock %}

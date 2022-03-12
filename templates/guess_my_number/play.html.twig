@@ -1,0 +1,131 @@
+{# templates/guess_my_number/play.html.twig #}
+{% extends 'guess_my_number/layout.html.twig' %}
+
+{% block nav %}
+    {# {{ dump(app.request.attributes) }} #}
+    {% if app.request %}
+        <ul>
+            {# Below to get the route name as in the route definition in the controller: #}
+            {% set route_name = app.request.attributes.get('_route') %}
+
+            <li class="{% if route_name == 'start_index' %}active{% endif %}"><a href="{{ path('start_index') }}">Start</a></li>
+            <li class="{% if route_name == 'me' %}active{% endif %}"><a href="{{ path('me') }}">Me</a></li>
+            <li class="{% if route_name == 'about' %}active{% endif %}"><a href="{{ path('about') }}">About</a></li>
+            <li class="{% if route_name == 'game_one_hundred_play' %}active-game{% endif %}"><a href="{{ path('game_one_hundred_index') }}">Game 100</a></li>
+            <li class="{% if route_name == 'book' %}active{% endif %}"><a href="{{ path('book_all') }}">Books</a></li>
+            <li class="{% if route_name == 'high_score_find_all' %}active{% endif %}"><a href="{{ path('high_score_find_all') }}">Highscores</a></li>
+            <li class="{% if route_name == 'guess_my_number_play' %}active{% endif %}"><a href="{{ path('guess_my_number_index') }}">Guess my number</a></li>
+        </ul>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    {# <p>Guess: {{ guess }}</p>
+    <p>Res: {{ res }}</p>
+    <p>Tries: {{ tries }}</p>
+    <p>Number: {{ number }}</p> #}
+    {# <p>Do guess: {{ do_guess }}</p> #}
+    {# <p>Do cheat: {{ do_cheat }}</p>
+    <p>Num res: {{ num_res }}</p> #}
+
+    <h1 class="guess-header">Guess my number</h1>
+
+    {% if tries == 6 %}
+        <p class="guess-game-p">Guess a number from 1 to 100.</p>
+        <p class="guess-game-tries-p">You have {{ tries }} tries to figure out the secret number.</p>
+    {% endif %}
+
+    {% if (guess != number) and (tries is not same as(0) )%}
+    {# {% if (guess != number) %} #}
+    {# {% if (tries is not same as(0)) %} #}
+        <form method="post" action="{{ path('guess_my_number_play_post')}}">
+                {# <input type="text" name="guess" required> #}
+                <input type="number" name="guess" required min=1 max=100>
+                <input type="submit" name="doGuess" value="Make a guess">
+                {# <p>Press cheat below to find out the secret number while guessing.</p>
+                <a class="game-button" href="{{ path('guess_my_number_do_cheat') }}">
+                    <button type="button">Cheat</button>
+                </a> #}
+            {# <a href="{{ path('guess_my_number_init') }}">Start from beginning</a> #}
+            {# <a class="game-button" href="{{ path('guess_my_number_init') }}">
+                <button type="button">Start from beginning</button>
+            </a> #}
+        </form>
+    {% endif %}
+
+    {# {{ dump(res) }} #}
+
+    {% if (res is same as ("CORRECT")) %}
+        <p>You guessed {{ guess }}.</p>
+        <h2>Congratulations, you won on the {{ tries|replace(
+            {
+                '5': "first",
+                '4': "second",
+                '3': "third",
+                '2': "fourth",
+                '1': "fifth",
+                '0': "sixth"
+            }
+        ) }} try! {{ do_cheat }}</h2>
+        <p>Press Start from beginning to play again.</p>
+    {# {% elseif res %} #}
+    {% elseif (res) and (tries is not same as(0)) %}
+        <p class="guess-p">You guessed {{ guess }}.</p>
+        <p class="result-p">Unfortunately, your guess is {{ res }}.
+        <p class="tries-p">You have {{ tries }} tries left. Try again!</p>
+    {% endif %}
+
+    {% if (guess != number) and (tries is not same as(0) )%}
+        {% if not (do_cheat) %}
+            <p>Press cheat to find out the secret number while guessing.
+                <a class="game-button" href="{{ path('guess_my_number_do_cheat') }}">
+                    <button type="button">Cheat</button>
+                </a>
+            </p>
+        {% endif %}
+        {% if (num_res) %}
+            <p class="guess-game-cheat-p">The secret number is {{ num_res }}. </p>
+            {% if (tries < 6) %}
+                <p>You have {{ tries }} tries left.</p>
+            {% endif %}
+        {% endif %}
+    {% endif %}
+
+    {% if (tries == 0) and (res is not same as ("CORRECT")) %}
+        <p>Sorry, but you have no tries left.</p>
+        <p>You guessed {{ guess }}.</p>
+        <p>The secret number between 1 and 100 was {{ number }}.</p>
+        <p>Press Start from beginning to play again.</p>
+    {% endif %}
+
+    <p>
+        <a class="game-button" href="{{ path('guess_my_number_init') }}">
+            <button type="button">Start from beginning</button>
+        </a>
+    </p>
+
+    {% if (guess == number) and not (do_cheat) %}
+        <p>Enter your name to create your record for the guess game!</p>
+        {# <form> #}
+        <form method="post" action="{{ path('guess_record_create_record')}}">
+            <input name="number" value="{{ number }}">
+            {# <input type="hidden" name="number" value="{{ number }}"> #}
+            <input name="tries" value="{{ tries|replace(
+                {
+                    '5': "1",
+                    '4': "2",
+                    '3': "3",
+                    '2': "4",
+                    '1': "5",
+                    '0': "6"
+                }
+            ) }}">
+            <label>Your name:</label>
+            <input type="text" name="name" required>
+            {# <label>Score:</label>
+            <input name="score" value="{{ tot_score_player }}" readonly> #}
+            <input type="submit" id="submit" name="doit" value="Create guess record">
+        </form>
+    {% endif %}
+
+{% endblock %}

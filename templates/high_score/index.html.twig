@@ -1,0 +1,52 @@
+{# templates/high_score/index.html.twig #}
+
+{% extends 'high_score/layout.html.twig' %}
+
+{# {% block title %}Hello HighScoreController!{% endblock %} #}
+
+{% block content %}
+
+    {# <h1>Hello {{ controller_name }}! ✅</h1> #}
+    <h1>Highscores of the Game 100!</h1>
+    {# <p>{{ dump(high_scores) }}</p> #}
+    {% if high_scores is defined %}
+        <table class="high-scores-table">
+            {# <caption>Highscores of Game 100</caption> #}
+            <thead>
+                <tr>
+                    {# <th>Id</th> #}
+                    <th>Winner</th>
+                    <th>Score</th>
+                    <th>Datetime</th>
+                    {# <th>HistogramPlayer</th>
+                    <th>HistogramComputer</th> #}
+                    <th>Histogram</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for high_score in high_scores %}
+                <tr>
+                    {# <td>{{ high_score.id }}</td> #}
+                    <td>{{ high_score.winner }}</td>
+                    <td>{{ high_score.score }}</td>
+                    <td>{{ high_score.date }}</td>
+                    {# <td>{{ high_score.histogramp }}</td>
+                    <td>{{ high_score.histogramc }}</td> #}
+                    <td>
+                        {# <p>{{ histograms_url }}</p> #}
+                        {# <a href="{{ histograms_url, {id: 135} }}">Histogram</a> #}
+                        {# <a href="{{ histograms_url, {id: high_score.id} }}">Histogram</a> #}
+                        {# <a href="{{ path('high_score_find_histograms', {id: 135}) }}">Histogram</a> #}
+                        <a href="{{ path('high_score_find_histograms', {id: high_score.id}) }}">Histogram</a>
+                        {# <a href="{{ url('high_score_find_histograms', {id: high_score.id}) }}">Histogram</a> #}
+                        {# <a href="{{ path('blog_post', {slug: post.slug}) }}">{{ post.title }}</a> #}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <h2>Sorry, there are no highscores to show!</h2>
+        <p>Route name of controller: {{ route_name_of_controller }}</p>
+    {% endif %}
+{% endblock %}

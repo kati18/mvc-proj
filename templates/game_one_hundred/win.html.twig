@@ -1,0 +1,118 @@
+{# templates/game_one_hundred/win.html.twig #}
+{% extends 'game_one_hundred/layout.html.twig' %}
+
+{% block nav %}
+    {# {{ dump(app.request.attributes) }} #}
+    {% if app.request %}
+        <ul>
+            {# Below to get the route name as in the route definition in the controller: #}
+            {% set route_name = app.request.attributes.get('_route') %}
+
+            <li class="{% if route_name == 'start_index' %}active{% endif %}"><a href="{{ path('start_index') }}">Start</a></li>
+            <li class="{% if route_name == 'me' %}active{% endif %}"><a href="{{ path('me') }}">Me</a></li>
+            <li class="{% if route_name == 'about' %}active{% endif %}"><a href="{{ path('about') }}">About</a></li>
+            <li class="{% if route_name == 'game_one_hundred_win' %}active-game{% endif %}"><a href="{{ path('game_one_hundred_index') }}">Game 100</a></li>
+        <li class="{% if route_name == 'high_score_find_all' %}active{% endif %}"><a href="{{ path('high_score_find_all') }}">Highscores</a></li>
+            <li class="{% if route_name == 'book' %}active{% endif %}"><a href="{{ path('book_all') }}">Books</a></li>
+            <li class="{% if route_name == 'guess_my_number_index' %}active{% endif %}"><a href="{{ path('guess_my_number_index') }}">Guess my number</a></li>
+            <li class="{% if route_name == 'guess_record_find_all' %}active{% endif %}"><a href="{{ path('guess_record_find_all') }}">Guess records</a></li>
+        </ul>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+    <h1>Dice game 100 is over!</h1>
+
+    <p>Total score computer: {{ tot_score_computer }}<br>
+    {% if game_over is same as ("The computer won the dice game!") %}
+        Dice values of the last roll of the computer: {{ last_roll_computer|join(', ') }}</p>
+    {% endif %}
+
+    <p>Total score player: {{ tot_score_player }}</p>
+    <p>Winner: {{ game_over }}</p>
+
+    {# <p>Histogram for player: {{ dump(histogram_player) }}</p> #}
+    {# <p>Histogram for player: {{ dump(histogram_player)|nl2br }}</p> #}
+    {# <p>Histogram for player: <br>{{ histogram_player|nl2br }}</p> #}
+
+    {# <p>Histogram for computer: {{ dump(histogram_computer) }}</p> #}
+    {# <p>Histogram for computer: {{ dump(histogram_computer) }}</p> #}
+    {# <p>Histogram for computer: <br>{{ histogram_computer|nl2br }}</p> #}
+
+    {# <p>Dicesfaces for player: {{ dump(youDiceFaces) }}</p>
+    <p>Dicefaces for computer: {{ dump(computerDiceFaces) }}</p> #}
+
+    <h2>&#127922; Histogram for player:</h2>
+    <p class="histograms_histogramp">{{ histogram_player|replace(
+        {
+            '1': "&#9856;",
+            '2': "&#9857;",
+            '3': "&#9858;",
+            '4': "&#9859;",
+            '5': "&#9860;",
+            '6': "&#9861;"
+        })|trans|raw|nl2br }}
+    </p>
+    <hr>
+    <h2>&#127922; Histogram for Computer:</h2>
+    <p class="histograms_histogramc">{{ histogram_computer|replace(
+        {
+            '1': "&#9856;",
+            '2': "&#9857;",
+            '3': "&#9858;",
+            '4': "&#9859;",
+            '5': "&#9860;",
+            '6': "&#9861;"
+        })|trans|raw|nl2br }}
+    </p>
+
+    <hr>
+    {% if game_over is same as ("The computer won the dice game!") %}
+        <p>Click Create high score to create a high score record for Computer!</p>
+        <form method="post" action="{{ path('high_score_create')}}">
+                <input type="hidden" name="histogramp" value="{{ histogram_player }}">
+                <input type="hidden" name="histogramc" value="{{ histogram_computer }}">
+                <label>Winner:</label>
+                <input type="text" name="winner" value="Computer" readonly>
+                <label>Score:</label>
+                <input name="score" value="{{ tot_score_computer }}" readonly>
+                <input type="submit" id="submit" name="doit" value="Create high score">
+        </form>
+    {% elseif game_over is same as ("You won the dice game!") %}
+        <p>Enter your name to create your high score record!</p>
+        <form method="post" action="{{ path('high_score_create')}}">
+            <input type="hidden" name="histogramp" value="{{ histogram_player }}">
+            <input type="hidden" name="histogramc" value="{{ histogram_computer }}">
+            <label>Winner:</label>
+            <input type="text" name="winner" required>
+            <label>Score:</label>
+            <input name="score" value="{{ tot_score_player }}" readonly>
+            <input type="submit" id="submit" name="doit" value="Create high score">
+        </form>
+    {% endif %}
+
+    {# Outcommented 22-01-26 kl.20:15: #}
+    {# {% if game_over is same as ("The computer won the dice game!") %}
+        {{ render(path('high_score_create', {score: tot_score_computer, winner: "Computer", histogramp: histogram_player, histogramc: histogram_computer})) }}
+    {% elseif game_over is same as ("You won the dice game!") %}
+        {{ render(path('high_score_create', {score: tot_score_player, winner: "Player", histogramp: histogram_player, histogramc: histogram_computer})) }}
+    {% endif %} #}
+    {# End outcommented 22-01-26 kl.20:15: #}
+
+    {# Outcommented 22-01-23 kl.13:50: #}
+    {# {% if game_over is same as ("The computer won the dice game!") %}
+        {{ render(path('high_score_create', {score: tot_score_computer, winner: "Computer"})) }}
+    {% elseif game_over is same as ("You won the dice game!") %}
+        {{ render(path('high_score_create', {score: tot_score_player, winner: "Player"})) }}
+    {% endif %} #}
+    {# Outcommented 22-01-23 kl.13:50: #}
+
+    <br>
+    <p>
+    {# <a href="restart-init"> #}
+    <a class="game-button" href="{{ path('game_one_hundred_restart_init') }}">
+    <button type="button">Start from the beginning</button>
+    </a>
+    </p>
+{% endblock %}

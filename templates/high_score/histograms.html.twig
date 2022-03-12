@@ -1,0 +1,58 @@
+{# templates/high_score/histograms.html.twig #}
+
+{% extends 'high_score/layout.html.twig' %}
+
+{# {% block title %}Hello HighScoreController!{% endblock %} #}
+
+{% block content %}
+
+    {# <h1>Hello {{ controller_name }}! ✅</h1> #}
+    <h1>Histograms of the Game 100!</h1>
+    {# <p>{{ dump(histograms) }}</p> #}
+
+    <p class="winner">The winner of this game is: {{ histograms.winner }}</p>
+    <p>The winning score is: {{ histograms.score }}</p>
+    <p>The game was won: {{ histograms.date }}</p>
+    <p>The id for the game is: {{ histograms.id }}</p>
+    {# <p></p> #}
+
+    {# <hr>
+    {% if (histograms.histogramp) and (histograms.histogramc)%}
+        <p>Histogram1 for player: {{ dump(histograms.histogramp) }}</p>
+        <p>Histogram for player: <br>{{ histograms.histogramp|nl2br }}</p>
+        <p>Histogram1 for computer: {{ dump(histograms.histogramc) }}</p>
+        <p>Histogram for Computer: <br>{{ histograms.histogramc|nl2br }}</p>
+    {% else %}
+        <p>Sorry, there are no histograms available from this game.</p>
+    {% endif %} #}
+
+    <hr>
+    {% if (histograms.histogramp) and (histograms.histogramc)%}
+        <h2>&#127922; Histogram for player:</h2>
+        <p class="histograms_histogramp">{{ histograms.histogramp|replace(
+            {
+                '1': "&#9856;",
+                '2': "&#9857;",
+                '3': "&#9858;",
+                '4': "&#9859;",
+                '5': "&#9860;",
+                '6': "&#9861;"
+            })|trans|raw|nl2br }}
+        </p>
+        <hr>
+        <h2>&#127922; Histogram for Computer:</h2>
+        <p class="histograms_histogramc">{{ histograms.histogramc|replace(
+            {
+                '1': "&#9856;",
+                '2': "&#9857;",
+                '3': "&#9858;",
+                '4': "&#9859;",
+                '5': "&#9860;",
+                '6': "&#9861;"
+            })|trans|raw|nl2br }}
+        </p>
+        <hr>
+    {% else %}
+        <p>Sorry, there are no histograms available from this game.</p>
+    {% endif %}
+{% endblock %}
