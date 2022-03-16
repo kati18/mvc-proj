@@ -15,6 +15,7 @@
             <li class="{% if route_name == 'book' %}active{% endif %}"><a href="{{ path('book_all') }}">Books</a></li>
             <li class="{% if route_name == 'high_score_find_all' %}active{% endif %}"><a href="{{ path('high_score_find_all') }}">Highscores</a></li>
             <li class="{% if route_name == 'guess_my_number_play' %}active{% endif %}"><a href="{{ path('guess_my_number_index') }}">Guess my number</a></li>
+            <li class="{% if route_name == 'guess_record_find_all' %}active{% endif %}"><a href="{{ path('guess_record_find_all') }}">Guess records</a></li>
         </ul>
     {% endif %}
 {% endblock %}

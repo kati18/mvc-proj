@@ -1,6 +1,6 @@
 {
-    "name": "mvc/ci",
-    "description": "A part of the course mvc, the CI.",
+    "name": "mvc/proj",
+    "description": "A part of the course mvc, the project.",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "stable",

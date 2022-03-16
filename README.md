@@ -1,6 +1,6 @@
-# Symfony
+# README
 
-This project was generated with [Symfony CLI](https://symfony.com/download) version 4.26.8.
+This web application was created with [Symfony CLI](https://symfony.com/download) version 4.28.1.
 
 [![Build Status](https://app.travis-ci.com/kati18/mvc-proj.svg?branch=master)](https://app.travis-ci.com/kati18/mvc-proj)
 
@@ -8,6 +8,40 @@ This project was generated with [Symfony CLI](https://symfony.com/download) vers
 [![Code Coverage](https://scrutinizer-ci.com/g/kati18/mvc-proj/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/kati18/mvc-proj/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/kati18/mvc-proj/badges/build.png?b=master)](https://scrutinizer-ci.com/g/kati18/mvc-proj/build-status/master)
 [![Code Intelligence Status](https://scrutinizer-ci.com/g/kati18/mvc-proj/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
+
+## About
+
+This Symfony web application contains two games - the dice game "Game 100" and the guess game "Guess my number" as well as an database for storing game results and the developer´s favorite books.
+
+### Game 100
+
+In Game 100 you play against the Computer until one of you reaches the total score of 100 or more. The game starts with each player (you and the Computer) rolling a single die in order to decide who gets to start playing i.e. rolling three dice. A die face of 1 sets the game round score to 0 and the turn goes over to the other player. The total winning score can be saved into a high score table.
+
+![Exit image](public/img/dice.jpg?raw=true)
+
+### Guess my number
+
+In Guess my number you have six tries to figure out the secret number which is a random number from 1 to 100. After each guess you get a hint on whether your guess is too low or too high. It is possible to cheat during the game and then continue to play. The guess record can, unless you cheated, be saved into a guess records table.
+
+![Exit image](public/img/numbers_2.jpg?raw=true)
+![Exit image](public/img/numbers_3.jpg?raw=true)
+![Exit image](public/img/numbers_4.jpg?raw=true)
+
+## Software Requirements Specification(SRS):
+
+    - a local web server running php ^8.0
+    - composer
+    - a web browser
+
+## Installation
+
+    - download github repository: [Github repo mvc-proj](https://github.com/kati18/mvc-proj)
+    - in terminal run composer install
+
+## Start playing by:
+
+    - starting the local web server
+    - in browser navigate to the directory of installation/public
 
 ## Development server
 
