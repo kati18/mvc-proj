@@ -7,4 +7,8 @@ v7.0.0 (2022-01-04)
 
 v7.0.1 (2022-03-16)
 -------------------
-* README.md updated. Badge for Travis added. 
+* README.md updated. Badge for Travis added.
+
+v7.0.2 (2022-03-17)
+-------------------
+* README.md updated with images.

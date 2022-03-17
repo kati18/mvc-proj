@@ -17,15 +17,15 @@ This Symfony web application contains two games - the dice game "Game 100" and t
 
 In Game 100 you play against the Computer until one of you reaches the total score of 100 or more. The game starts with each player (you and the Computer) rolling a single die in order to decide who gets to start playing i.e. rolling three dice. A die face of 1 sets the game round score to 0 and the turn goes over to the other player. The total winning score can be saved into a high score table.
 
-![Exit image](public/img/dice.jpg?raw=true)
+![Dice image](public/img_books/dice.jpg?raw=true)
 
 ### Guess my number
 
 In Guess my number you have six tries to figure out the secret number which is a random number from 1 to 100. After each guess you get a hint on whether your guess is too low or too high. It is possible to cheat during the game and then continue to play. The guess record can, unless you cheated, be saved into a guess records table.
 
-![Exit image](public/img/numbers_2.jpg?raw=true)
-![Exit image](public/img/numbers_3.jpg?raw=true)
-![Exit image](public/img/numbers_4.jpg?raw=true)
+![Numbers image](public/img_books/numbers_2.jpg?raw=true)
+![Numbers image](public/img_books/numbers_3.jpg?raw=true)
+![Numbers image](public/img_books/numbers_4.jpg?raw=true)
 
 ## Software Requirements Specification(SRS):
 
@@ -33,9 +33,9 @@ In Guess my number you have six tries to figure out the secret number which is a
     - composer
     - a web browser
 
-## Installation
+## Installation:
 
-    - download github repository: [Github repo mvc-proj](https://github.com/kati18/mvc-proj)
+    - download github repository [Github repo mvc-proj](https://github.com/kati18/mvc-proj)
     - in terminal run composer install
 
 ## Start playing by:
