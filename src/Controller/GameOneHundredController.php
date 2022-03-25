@@ -266,13 +266,13 @@ class GameOneHundredController extends AbstractController
         $gameOneHundred = $session->get('gameOneHundred', null);
         $lastRollComputer = $session->get('lastRollComputer', null);
 
-        // $gameOneHundred->getTotDiceFacesGame("You");
-        $youDiceFaces = $gameOneHundred->getTotDiceFacesGame("You");
+        $gameOneHundred->getTotDiceFacesGame("You");
+        // $youDiceFaces = $gameOneHundred->getTotDiceFacesGame("You");
         // echo "Micke\n";
         // echo "youDiceFaces\n";
         // var_dump($youDiceFaces);
-        // $gameOneHundred->getTotDiceFacesGame("Computer");
-        $computerDiceFaces = $gameOneHundred->getTotDiceFacesGame("Computer");
+        $gameOneHundred->getTotDiceFacesGame("Computer");
+        // $computerDiceFaces = $gameOneHundred->getTotDiceFacesGame("Computer");
         // echo "computerDiceFaces";
         // var_dump($computerDiceFaces);
 

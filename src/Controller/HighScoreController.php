@@ -84,7 +84,7 @@ class HighScoreController extends AbstractController
 
     // Test 220206 kl 19:49. Seems to work 220206 kl 20:24:
     #[Route('/find/histograms/{id}', name: 'find_histograms', methods: 'GET')]
-    public function fetchHistograms(HighScore $histograms, HighScoreRepository $highScoreRepository): Response
+    public function fetchHistograms(HighScore $histograms, /** @scrutinizer ignore-unused */ HighScoreRepository $highScoreRepository): Response
     {
         // $histograms = $highScoreRepository->find($histograms);
 

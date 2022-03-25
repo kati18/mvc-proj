@@ -60,8 +60,8 @@ class ControllerGameOneHundredTest extends WebTestCase
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('h1', 'Katja');
-        $this->assertSelectorTextContains('h2', 'game 100');
-        $this->assertCount(2, $crawler->filter('h2'));
+        $this->assertSelectorTextContains('.heading-start-game-100', 'Game 100');
+        $this->assertCount(1, $crawler->filter('h2'));
 
         //Below row works if $this->client->followRedirects() is not active in setUp():
         // $this->assertResponseRedirects('/gameonehundred/index', 301);
@@ -94,6 +94,7 @@ class ControllerGameOneHundredTest extends WebTestCase
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('title', 'My Symfony App!');
         $this->assertCount(1, $crawler->filter('p'));
+        $this->assertSelectorTextContains('.heading-start-game-100', 'start page of the game Game 100');
 
         // unset($client);
     }
@@ -117,8 +118,9 @@ class ControllerGameOneHundredTest extends WebTestCase
         );
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('.congratulation-text', 'Congratulations');
-        $this->assertCount(2, $crawler->filter('h2'));
+        $this->assertSelectorTextContains('.init-roll-text', 'Let´s get ready to play');
+        $this->assertCount(1, $crawler->filter('h2'));
+        $this->assertCount(1, $crawler->filter('button'));
 
         // unset($client);
     }
@@ -148,9 +150,10 @@ class ControllerGameOneHundredTest extends WebTestCase
         );
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h2', 'game 100');
-        $this->assertSelectorTextContains('.congratulation-text', 'Congratulations');
+        $this->assertSelectorTextContains('h2', 'Game 100');
+        $this->assertSelectorTextContains('.play-text', 'Game 100');
         $this->assertCount(4, $crawler->filter('p'));
+        $this->assertCount(1, $crawler->filter('button'));
 
         // unset($client);
     }
@@ -189,7 +192,7 @@ class ControllerGameOneHundredTest extends WebTestCase
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('.current-player', 'Player: Katja');
         $this->assertSelectorTextContains('.start-from-beginning', 'Start from the beginning');
-        $this->assertCount(2, $crawler->filter('h2'));
+        $this->assertCount(1, $crawler->filter('h2'));
 
         // unset($client);
     }
@@ -291,38 +294,6 @@ class ControllerGameOneHundredTest extends WebTestCase
         // unset($client);
     }
 
-    // /**
-    //  * Testcase that asserts that the controller win returns:
-    //  * - a response with correct status code
-    //  * - a successful response
-    //  */
-    // public function testControllerWinReturnsStatusCodeAndContent()
-    // {
-    //     /** Does not pass make test.
-    //      * Test 211101 kl 15:05 and according to:
-    //      * https://stackoverflow.com/questions/11514490/symfony-2-adding-session-data-to-request-object-during-unit-testing
-    //      */
-    //     $sessionObj = $this->client->getContainer()->get('session');
-    //     $sessionObj->set('gameOneHundred', new GameOneHundred(currentPlayer: 'Katja'));
-    //     //End test 211101 kl 15:05
-    //
-    //     $crawler = $this->client->request('GET', '/gameonehundred/win');
-    //
-    //     $this->assertNotSame(
-    //         Response::HTTP_FOUND,
-    //         $this->client->getResponse()->getStatusCode()
-    //     );
-    //
-    //     $this->assertSame(
-    //         Response::HTTP_OK,
-    //         $this->client->getResponse()->getStatusCode()
-    //     );
-    //
-    //     $this->assertResponseIsSuccessful();
-    //
-    //     // unset($client);
-    // }
-
     /**
      * Testcase that asserts that the controller win returns:
      * - a response with correct status code
@@ -355,45 +326,6 @@ class ControllerGameOneHundredTest extends WebTestCase
         // unset($client);
     }
 
-
-    // /**
-    //  * Testcase that asserts that the controller win returns:
-    //  * - a response with correct status code
-    //  * - a successful response
-    //  */
-    // public function testControllerWinReturnsStatusCodeAndContent2()
-    // {
-    //     /** Test 211101 kl 15:05 and according to:
-    //      * https://stackoverflow.com/questions/11514490/symfony-2-adding-session-data-to-request-object-during-unit-testing
-    //      */
-    //     $sessionObj = $this->client->getContainer()->get('session');
-    //     $gameOneHundredObj = new GameOneHundred(currentPlayer: 'You');
-    //     $gameOneHundredObj->getGameRoundGame()->getDiceHandGameRound()->setDiceFacesDiceHand(1, 2, 3, 4, 5);
-    //     $gameOneHundredObj->setTotDiceFacesGame();
-    //     $gameOneHundredObj->changeCurrentPlayerGame();
-    //
-    //     $gameOneHundredObj->getGameRoundGame()->getDiceHandGameRound()->setDiceFacesDiceHand(5, 4, 3, 2, 1);
-    //     $gameOneHundredObj->setTotDiceFacesGame();
-    //
-    //     $sessionObj->set('gameOneHundred', $gameOneHundredObj);
-    //     //End test 211101 kl 15:05
-    //
-    //     $crawler = $this->client->request('GET', '/gameonehundred/win');
-    //
-    //     $this->assertNotSame(
-    //         Response::HTTP_FOUND,
-    //         $this->client->getResponse()->getStatusCode()
-    //     );
-    //
-    //     $this->assertSame(
-    //         Response::HTTP_OK,
-    //         $this->client->getResponse()->getStatusCode()
-    //     );
-    //
-    //     $this->assertResponseIsSuccessful();
-    //
-    //     // unset($client);
-    // }
 
     /**
      * Testcase that asserts that the controller restartInit returns:

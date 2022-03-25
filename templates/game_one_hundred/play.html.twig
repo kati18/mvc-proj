@@ -21,7 +21,8 @@
 {% endblock %}
 
 {% block content %}
-    <h2>Current standings in game 100!!!</h2>
+    <br>
+    <h2>Current standings in Game 100</h2>
 
     <p>Total score computer: {{ tot_score_computer }}<br>
     {% if last_roll_computer %}
@@ -34,72 +35,33 @@
     <p>Dice values: {{ dice_values|join(', ') }}</p>
     <p>Round score: {{ round_score }}</p>
 
-    {# Outcommented 220221 kl. 21:07. #}
-    {# <p>
-        <a class="game-button" href="{{ path('game_one_hundred_play') }}">
-            <button type="button"
-            {% if round_score is same as(0) %}
-                disabled
-            {% endif %}
-            >Roll again</button>
-        </a>
-    </p> #}
-    {# End outcommented 220221 kl. 21:07. #}
-    {# Test 220221 kl. 20:13. Seems to work at kl. 20:27  #}
     {% if round_score is not same as(0) %}
         <p>
             <a class="game-button" href="{{ path('game_one_hundred_play') }}">
                 <button type="button"
-                >Roll again again</button>
+                >Roll again</button>
             </a>
         </p>
     {% endif %}
-    {# End test 220221 kl. 20:13 #}
 
-    {# Outcommented 220221 kl. 21:07. #}
-    {# <p>
-        <a class="game-button" href="{{ path('game_one_hundred_save') }}">
-            <button type="button"
-            {% if round_score is same as(0) %}
-                disabled
-            {% endif %}
-            >Save round score to total score</button>
-        </a>
-    </p> #}
-    {# End outcommented 220221 kl. 21:07. #}
-    {# Test 220221 kl. 20:49. Seems to work at kl. HH:MM #}
     {% if round_score is not same as(0) %}
         <p>
             <a class="game-button" href="{{ path('game_one_hundred_save') }}">
                 <button type="button"
-                >Save round score to total score again</button>
+                >Save round score to total score</button>
             </a>
         </p>
     {% endif %}
-    {# End test 220221 kl. 20:49 #}
 
-    {# Outcommented 220221 kl. 21:07. #}
-    {# <p>
-        <a class="game-button" href="{{ path('game_one_hundred_play_computer') }}">
-            <button type="button"
-            {% if (round_score is same as(0) and current_player is same as("Computer")) or (round_score > 0) %}
-                disabled hidden
-            {% endif %}
-            >Next player is the computer - click here to let it roll</button>
-        </a>
-    </p> #}
-    {# End outcommented 220221 kl. 21:07. #}
-    {# Test 220221 kl. 20:52. Seems to work at kl. HH:MM #}
     {% if (round_score is same as(0) and current_player is not same as("Computer")) %}
         <p>
             {# <a href="play-computer"> #}
             <a class="game-button" href="{{ path('game_one_hundred_play_computer') }}">
                 <button type="button"
-                >Next player is the computer - click here to let it roll again</button>
+                >Next player is the computer - click here to let it roll</button>
             </a>
         </p>
     {% endif %}
-    {# End test 220221 kl. 20:52 #}
 
     <p>
         {# <a href="restart-init"> #}

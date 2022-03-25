@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Tests\Controller;
 
 use App\Guess\Guess;
-// use App\Guess\Histogram;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
@@ -58,7 +57,7 @@ class ControllerGuessMyNumberTest extends WebTestCase
         );
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h2', 'The guess my number game!');
+        $this->assertSelectorTextContains('.heading-start-guess-my-number', 'start page of the game Guess my number');
         $this->assertCount(1, $crawler->filter('button'));
 
         //Below row works if $this->client->followRedirects() is not active in setUp():
@@ -116,7 +115,7 @@ class ControllerGuessMyNumberTest extends WebTestCase
         );
 
         $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h2', 'my number game');
+        $this->assertSelectorTextContains('.guess-header', 'Guess my number');
         $this->assertSelectorTextContains('h1', 'Katja´s first Symfony app in course mvc at BTH 2021!');
         $this->assertSelectorTextContains('p', 'Guess a number from 1 to 100.');
         $this->assertSelectorTextContains('button', 'Cheat');

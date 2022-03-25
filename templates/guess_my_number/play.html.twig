@@ -23,12 +23,13 @@
 {% block content %}
     {# <p>Guess: {{ guess }}</p>
     <p>Res: {{ res }}</p>
-    <p>Tries: {{ tries }}</p>
-    <p>Number: {{ number }}</p> #}
+    <p>Tries: {{ tries }}</p> #}
+    {# <p>Number: {{ number }}</p> #}
     {# <p>Do guess: {{ do_guess }}</p> #}
     {# <p>Do cheat: {{ do_cheat }}</p>
     <p>Num res: {{ num_res }}</p> #}
 
+    <br>
     <h1 class="guess-header">Guess my number</h1>
 
     {% if tries == 6 %}
@@ -40,17 +41,8 @@
     {# {% if (guess != number) %} #}
     {# {% if (tries is not same as(0)) %} #}
         <form method="post" action="{{ path('guess_my_number_play_post')}}">
-                {# <input type="text" name="guess" required> #}
                 <input type="number" name="guess" required min=1 max=100>
                 <input type="submit" name="doGuess" value="Make a guess">
-                {# <p>Press cheat below to find out the secret number while guessing.</p>
-                <a class="game-button" href="{{ path('guess_my_number_do_cheat') }}">
-                    <button type="button">Cheat</button>
-                </a> #}
-            {# <a href="{{ path('guess_my_number_init') }}">Start from beginning</a> #}
-            {# <a class="game-button" href="{{ path('guess_my_number_init') }}">
-                <button type="button">Start from beginning</button>
-            </a> #}
         </form>
     {% endif %}
 
@@ -58,7 +50,7 @@
 
     {% if (res is same as ("CORRECT")) %}
         <p>You guessed {{ guess }}.</p>
-        <h2>Congratulations, you won on the {{ tries|replace(
+        <h2>Congratulations, you guessed right on the {{ tries|replace(
             {
                 '5': "first",
                 '4': "second",
@@ -67,7 +59,11 @@
                 '1': "fifth",
                 '0': "sixth"
             }
-        ) }} try! {{ do_cheat }}</h2>
+        ) }} try! {{ do_cheat|replace(
+            {
+                'winking-emoji': "&#128521;"
+            }
+        )|trans|raw }} </h2>
         <p>Press Start from beginning to play again.</p>
     {# {% elseif res %} #}
     {% elseif (res) and (tries is not same as(0)) %}

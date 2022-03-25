@@ -52,7 +52,7 @@ class HighScore
         return $this->winner;
     }
 
-    public function setWinner(string $winner): self
+    public function setWinner(?string $winner): self
     {
         $this->winner = $winner;
 
@@ -64,7 +64,7 @@ class HighScore
         return $this->score;
     }
 
-    public function setScore(int $score): self
+    public function setScore(?int $score): self
     {
         $this->score = $score;
 

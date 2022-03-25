@@ -131,7 +131,7 @@ class GuessMyNumberController extends AbstractController
         // Get current settings from the session:
         $number = $session->get("number", null);
         $tries = $session->get("tries", null);
-        $res = null;
+        // $res = null;
 
         if ($doGuess) {
             $game = new Guess($number, $tries);
@@ -143,7 +143,7 @@ class GuessMyNumberController extends AbstractController
             $session->set("guess", $guess);
 
             // My addition. 200507 not sure if necessary:
-            $tries = $session->get("tries");
+            // $tries = $session->get("tries");
         }
         return $this->redirectToRoute('guess_my_number_play', [], 301);
     }
@@ -169,7 +169,8 @@ class GuessMyNumberController extends AbstractController
         // $session->set("res", null);
         $session->set("numRes", $numRes);
         $session->set("guess", null);
-        $session->set("doCheat", "Cheater!");
+        // $session->set("doCheat", "Cheater!");
+        $session->set("doCheat", "Cheater winking-emoji!");
 
         return $this->redirectToRoute('guess_my_number_play', [], 301);
     }

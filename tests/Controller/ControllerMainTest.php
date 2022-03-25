@@ -49,6 +49,7 @@ class ControllerMainTest extends WebTestCase
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('h1', 'Katja');
+        $this->assertSelectorTextContains('h3', 'In this application you can play the games Game 100 and Guess my number.');
 
         // unset($client);
     }
@@ -94,7 +95,10 @@ class ControllerMainTest extends WebTestCase
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('h1', 'Katja');
-        $this->assertSelectorTextContains('h3', 'Katjas about-sida');
+        $this->assertSelectorTextContains('.about-symfony', 'This web application');
+        $this->assertSelectorTextContains('.about-link', 'Symfony CLI');
+        $this->assertSelectorTextContains('.about-git-hub', 'more information');
+        $this->assertSelectorTextContains('.git-hub-link', 'mvc-proj');
 
         // unset($client);
     }

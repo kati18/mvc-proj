@@ -47,7 +47,7 @@ class Book
         return $this->title;
     }
 
-    public function setTitle(string $title): self
+    public function setTitle(?string $title): self
     {
         $this->title = $title;
 
@@ -59,7 +59,7 @@ class Book
         return $this->isbn;
     }
 
-    public function setIsbn(string $isbn): self
+    public function setIsbn(?string $isbn): self
     {
         $this->isbn = $isbn;
 
@@ -71,7 +71,7 @@ class Book
         return $this->author;
     }
 
-    public function setAuthor(string $author): self
+    public function setAuthor(?string $author): self
     {
         $this->author = $author;
 
@@ -83,7 +83,7 @@ class Book
         return $this->image;
     }
 
-    public function setImage(string $image): self
+    public function setImage(?string $image): self
     {
         $this->image = $image;
 

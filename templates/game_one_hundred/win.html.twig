@@ -22,7 +22,8 @@
 
 {% block content %}
 
-    <h1>Dice game 100 is over!</h1>
+    <br>
+    <h1>The game Game 100 is over!</h1>
 
     <p>Total score computer: {{ tot_score_computer }}<br>
     {% if game_over is same as ("The computer won the dice game!") %}
@@ -30,7 +31,7 @@
     {% endif %}
 
     <p>Total score player: {{ tot_score_player }}</p>
-    <p>Winner: {{ game_over }}</p>
+    <p class="winner">Winner: {{ game_over }}</p>
 
     {# <p>Histogram for player: {{ dump(histogram_player) }}</p> #}
     {# <p>Histogram for player: {{ dump(histogram_player)|nl2br }}</p> #}
@@ -91,22 +92,6 @@
             <input type="submit" id="submit" name="doit" value="Create high score">
         </form>
     {% endif %}
-
-    {# Outcommented 22-01-26 kl.20:15: #}
-    {# {% if game_over is same as ("The computer won the dice game!") %}
-        {{ render(path('high_score_create', {score: tot_score_computer, winner: "Computer", histogramp: histogram_player, histogramc: histogram_computer})) }}
-    {% elseif game_over is same as ("You won the dice game!") %}
-        {{ render(path('high_score_create', {score: tot_score_player, winner: "Player", histogramp: histogram_player, histogramc: histogram_computer})) }}
-    {% endif %} #}
-    {# End outcommented 22-01-26 kl.20:15: #}
-
-    {# Outcommented 22-01-23 kl.13:50: #}
-    {# {% if game_over is same as ("The computer won the dice game!") %}
-        {{ render(path('high_score_create', {score: tot_score_computer, winner: "Computer"})) }}
-    {% elseif game_over is same as ("You won the dice game!") %}
-        {{ render(path('high_score_create', {score: tot_score_player, winner: "Player"})) }}
-    {% endif %} #}
-    {# Outcommented 22-01-23 kl.13:50: #}
 
     <br>
     <p>

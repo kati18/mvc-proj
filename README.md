@@ -23,9 +23,7 @@ In Game 100 you play against the Computer until one of you reaches the total sco
 
 In Guess my number you have six tries to figure out the secret number which is a random number from 1 to 100. After each guess you get a hint on whether your guess is too low or too high. It is possible to cheat during the game and then continue to play. The guess record can, unless you cheated, be saved into a guess records table.
 
-![Numbers image](public/img_books/numbers_2.jpg?raw=true)
-![Numbers image](public/img_books/numbers_3.jpg?raw=true)
-![Numbers image](public/img_books/numbers_4.jpg?raw=true)
+![Numbers image](public/img_books/numbers.jpg?raw=true)
 
 ## Software Requirements Specification(SRS):
 
@@ -35,7 +33,7 @@ In Guess my number you have six tries to figure out the secret number which is a
 
 ## Installation:
 
-    - download github repository [Github repo mvc-proj](https://github.com/kati18/mvc-proj)
+    - download GitHub repository [GitHub repo mvc-proj](https://github.com/kati18/mvc-proj.git)
     - in terminal run composer install
 
 ## Start playing by:

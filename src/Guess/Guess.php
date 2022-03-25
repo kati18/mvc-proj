@@ -73,6 +73,26 @@ class Guess
     }
 
 
+    // /**
+    //  * Make a guess, decrease remaining guesses and return a string stating
+    //  * if the guess was correct, too low or to high or if no guesses remains.
+    //  *
+    //  * @param int $guess The guess made by the player
+    //  * @return string to show the status of the guess made.
+    //  */
+    // public function makeGuess(int $guess): string
+    // {
+    //     $this->tries--;
+    //
+    //     if ($guess === $this->number) {
+    //         return $res = "CORRECT";
+    //     } elseif ($guess > $this->number) {
+    //         return $res = "TOO HIGH";
+    //     } else {
+    //         return $res = "TOO LOW";
+    //     }
+    // }
+
     /**
      * Make a guess, decrease remaining guesses and return a string stating
      * if the guess was correct, too low or to high or if no guesses remains.
@@ -85,11 +105,12 @@ class Guess
         $this->tries--;
 
         if ($guess === $this->number) {
-            return $res = "CORRECT";
+            $res = "CORRECT";
         } elseif ($guess > $this->number) {
-            return $res = "TOO HIGH";
+            $res = "TOO HIGH";
         } else {
-            return $res = "TOO LOW";
+            $res = "TOO LOW";
         }
+        return $res;
     }
 }

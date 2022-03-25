@@ -10,6 +10,8 @@
 {% endblock %} #}
 
 {% block content %}
-    <p>Katjas main-innehåll på about-sidan!</p>
-    <h3>{{ about }}</h3>
+    <br>
+    {# <p>Katjas main-innehåll på about-sidan!</p> #}
+    <h2 class="about-symfony">{{ about|raw }}</h2>
+    <h3 class="about-git-hub">{{ git_hub|raw }}</h3>
 {% endblock %}

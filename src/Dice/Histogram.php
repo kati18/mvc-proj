@@ -54,7 +54,10 @@ class Histogram
         for ($i = $this->minPlayer; $i <= $this->maxPlayer; $i++) {
             if (in_array($i, $this->seriePlayer)) {
                 $res = $res . "{$i}: ";
-                for ($j = 0; $j < count(array_keys($this->seriePlayer, $i)); $j++) {
+                // for ($j = 0; $j < count(array_keys($this->seriePlayer, $i)); $j++) {
+                //     $res .= "x";
+                // }
+                for ($j = 0, $c = count(array_keys($this->seriePlayer, $i)); $j < $c; $j++) {
                     $res .= "x";
                 }
                 $res .= "\r\n";
@@ -74,7 +77,10 @@ class Histogram
         for ($i = $this->minComputer; $i <= $this->maxComputer; $i++) {
             if (in_array($i, $this->serieComputer)) {
                 $res = $res . "{$i}: ";
-                for ($j = 0; $j < count(array_keys($this->serieComputer, $i)); $j++) {
+                // for ($j = 0; $j < count(array_keys($this->serieComputer, $i)); $j++) {
+                //     $res .= "x";
+                // }
+                for ($j = 0, $c = count(array_keys($this->serieComputer, $i)); $j < $c; $j++) {
                     $res .= "x";
                 }
                 $res .= "\r\n";

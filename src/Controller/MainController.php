@@ -37,7 +37,9 @@ class MainController extends AbstractController
     public function index(): Response
     {
         return $this->render('main/index.html.twig', [
-            'main' => 'This is Katja´s first Symfony app ever!',
+            // 'main' => 'This is Katja´s first Symfony app ever!',
+            'main' => 'Welcome!',
+            'sub_main' => 'In this application you can play the games Game 100 and Guess my number.',
             'route_name_of_controller' => 'start_index',
         ]);
     }
@@ -50,7 +52,7 @@ class MainController extends AbstractController
             'route_name_of_controller' => 'me',
             'heading' => 'Katja Tibe',
             'me' => 'Katjas me-sida från Maincontroller!',
-            'more_about_me' => 'Är en på deltid tjänstledig småländsk sjukgymnast och ' .
+            'more_about_me' => 'Är en småländsk sjukgymnast och ' .
             'IT-utbildare som när hon inte kämpar med kursen mvc och PHP-ramverket ' .
             'Symfony gärna plockar kantareller och lingon, lagar god mat och ser på film och hockey.'
         ]);
@@ -60,9 +62,14 @@ class MainController extends AbstractController
     #[Route(path: '/about', name: 'about', methods: ['GET', 'HEAD'])]
     public function about(): Response
     {
+        $symfonyUrl = 'https://symfony.com/download';
+        $myGitHubLink = 'https://github.com/kati18/mvc-proj.git';
+
         return $this->render('main/about.html.twig', [
             'route_name_of_controller' => 'about',
-            'about' => 'Katjas about-sida från Maincontroller!',
+            // 'about' => 'Katjas about-sida från Maincontroller!',
+            'about' => 'This web application was created with' . "<a href='$symfonyUrl' class='about-link' target='_blank'>Symfony CLI</a>" . 'version 4.28.1.',
+            'git_hub' => 'For more information see' . "<a href='$myGitHubLink' class='git-hub-link' target='_blank'>GitHub repo mvc-proj</a>",
         ]);
     }
 

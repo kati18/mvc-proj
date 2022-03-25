@@ -85,6 +85,6 @@ class ControllerGuessRecordTest extends WebTestCase
         $this->assertCount(1, $crawler->filter('.guess-records-table'));
         $this->assertCount(1, $crawler->filter('table'));
         $this->assertCount(2, $crawler->filter('h1'));
-        $this->assertSelectorTextContains('.guess-records-header', 'Score records of the game guess my number!');
+        $this->assertSelectorTextContains('.guess-records-header', 'Score records of the game Guess my number');
     }
 }

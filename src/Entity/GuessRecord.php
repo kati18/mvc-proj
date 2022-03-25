@@ -47,7 +47,7 @@ class GuessRecord
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
@@ -59,7 +59,7 @@ class GuessRecord
         return $this->number;
     }
 
-    public function setNumber(int $number): self
+    public function setNumber(?int $number): self
     {
         $this->number = $number;
 
@@ -71,7 +71,7 @@ class GuessRecord
         return $this->tries;
     }
 
-    public function setTries(int $tries): self
+    public function setTries(?int $tries): self
     {
         $this->tries = $tries;
 
