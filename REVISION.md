@@ -16,3 +16,7 @@ v7.0.2 (2022-03-17)
 v7.1.0 (2022-03-25)
 -------------------
 * README.md updated with images and correct url to Gihub. Minor changes in template files.
+
+v7.1.1 (2022-03-27)
+-------------------
+* README.md updated with correct installation instruction.

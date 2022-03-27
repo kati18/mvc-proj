@@ -33,7 +33,7 @@ In Guess my number you have six tries to figure out the secret number which is a
 
 ## Installation:
 
-    - download GitHub repository [GitHub repo mvc-proj](https://github.com/kati18/mvc-proj.git)
+    - download this GitHub repository
     - in terminal run composer install
 
 ## Start playing by:
